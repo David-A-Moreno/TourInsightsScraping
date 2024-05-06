@@ -1,8 +1,5 @@
-import time
-import random
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import urllib.parse
 
 def scrape_tripadvisor_info(city_name):
     # Generar la URL en función del nombre de la ciudad
