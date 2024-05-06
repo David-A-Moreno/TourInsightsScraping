@@ -43,17 +43,21 @@ for index, section in enumerate(sections, start=1):
     
     # Guardar el rating en el diccionario
     section_data['rating'] = rating
+
+    img_tag = section.find('img')
+    section_data['imagen'] = img_tag['src'] if img_tag else "No se encontró imagen para la sección {index}"
     
     # Agregar el diccionario de la sección actual a la lista
     section_info.append(section_data)
 
 # Imprimir la información de cada sección
-#for section_data in section_info:
-    #print("Puesto:", section_data['puesto'])
-    #print("Rating:", section_data['rating'])
-    #print("Nombre:", section_data['nombre'])
-    #print("Calificaciones:", section_data['calificaciones'])
-    #print()
+for section_data in section_info:
+    print("Puesto:", section_data['puesto'])
+    print("Rating:", section_data['rating'])
+    print("Nombre:", section_data['nombre'])
+    print("Imagen:", section_data['imagen'])
+    print("Calificaciones:", section_data['calificaciones'])
+    print()
 
 # Cerrar el navegador después de terminar
 driver.quit()
