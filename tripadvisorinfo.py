@@ -6,9 +6,17 @@ def scrape_tripadvisor_info(city_name):
     # Generar la URL en función del nombre de la ciudad
     if city_name.lower() == "cali":
         tripadvisor_url="https://www.tripadvisor.co/Attractions-g297475-Activities-oa0-Cali_Valle_del_Cauca_Department.html"
-    else:
+    elif city_name.lower() == "medellin":
         tripadvisor_url = "https://www.tripadvisor.co/Attractions-g297478-Activities-oa0-Medellin_Antioquia_Department.html"
-    
+    elif city_name.lower() == "bogota":
+        tripadvisor_url = "https://www.tripadvisor.co/Attractions-g294074-Activities-oa0-Bogota.html"
+    elif city_name.lower() == "barranquilla":
+        tripadvisor_url = "https://www.tripadvisor.co/Attractions-g297473-Activities-oa0-Barranquilla_Atlantico_Department.html"
+    elif city_name.lower() == "cartagena":
+        tripadvisor_url = "https://www.tripadvisor.co/Attractions-g297476-Activities-oa0-Cartagena_Cartagena_District_Bolivar_Department.html"
+    else:
+        tripadvisor_url = "https://www.tripadvisor.co/Attractions-g297484-Activities-oa0-Santa_Marta_Santa_Marta_Municipality_Magdalena_Department.html"
+
     # Configurar el driver de Selenium 
     def get_driver():
         chrome_options = Options()

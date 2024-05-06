@@ -6,8 +6,16 @@ def scrape_minube_info(city_name):
     # Generar la URL en función del nombre de la ciudad
     if city_name.lower() == "cali":
         minube_url = "https://www.minube.com.co/que_ver/colombia/valle_del_cauca/cali"
-    else:
+    elif city_name.lower() == "medellin":
         minube_url = "https://www.minube.com.co/que_ver/colombia/antioquia/medellin"
+    elif city_name.lower() == "bogota":
+        minube_url = "https://www.minube.com.co/que_ver/colombia/bogota"
+    elif city_name.lower() == "barranquilla":
+        minube_url = "https://www.minube.com.co/que_ver/colombia/atlantico/barranquilla"
+    elif city_name.lower() == "cartagena":
+        minube_url = "https://www.minube.com.co/que_ver/colombia/bolivar/cartagena_de_indias"
+    else:
+        minube_url = "https://www.minube.com.co/que_ver/colombia/magdalena/santa_marta"
     
     # Configurar el driver de Selenium 
     def get_driver():
