@@ -5,6 +5,10 @@ from minubeinfo import scrape_minube_info
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return 'Hola'
+
 @app.route('/google-info')
 def get_google_info():
     city_name = request.args.get('city')
