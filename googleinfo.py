@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
 def scrape_google_info(city_name):
@@ -8,7 +9,22 @@ def scrape_google_info(city_name):
     else:
         google_url = "https://www.google.com/search?q=medellin+atracciones&sca_esv=1fcec3f5e0b15e20&rlz=1C1ALOY_esCO1084CO1084&sxsrf=ADLYWIK8aZ4BPotrDXKyUO9nL8bB_m9P1g:1714953193669&udm=15&sa=X&ved=2ahUKEwjX16i_2veFAxWQfjABHXymADsQxN8JegQIERAb&biw=1366&bih=607&dpr=1"
     # Configurar el driver de Selenium
-    driver = webdriver.Chrome() 
+    def get_driver():
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")  # Esta opción es crucial
+        chrome_options.add_argument("--disable-dev-shm-usage")  # Soluciona problemas de recursos limitados
+        chrome_options.add_argument("--disable-gpu")  # Ayuda en ciertos casos, aunque en modo headless el GPU no se utiliza
+        chrome_options.add_argument("--window-size=1920,1080")
+
+    # Opcional: especificar el path del driver si no está en PATH
+    # driver = webdriver.Chrome(executable_path='/path/to/chromedriver', options=chrome_options)
+    
+        driver = webdriver.Chrome(options=chrome_options)
+        return driver
+
+    # Usar la función para obtener una instancia del driver
+    driver = get_driver()
 
     # Cargar la página de Google en el navegador
     driver.get(google_url)
