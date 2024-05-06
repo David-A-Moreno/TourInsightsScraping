@@ -16,9 +16,6 @@ def scrape_google_info(city_name):
         chrome_options.add_argument("--disable-dev-shm-usage")  # Soluciona problemas de recursos limitados
         chrome_options.add_argument("--disable-gpu")  # Ayuda en ciertos casos, aunque en modo headless el GPU no se utiliza
         chrome_options.add_argument("--window-size=1920,1080")
-
-    # Opcional: especificar el path del driver si no está en PATH
-    # driver = webdriver.Chrome(executable_path='/path/to/chromedriver', options=chrome_options)
     
         driver = webdriver.Chrome(options=chrome_options)
         return driver

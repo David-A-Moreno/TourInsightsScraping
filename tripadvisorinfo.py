@@ -1,5 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.options import Options
 
 def scrape_tripadvisor_info(city_name):
     # Generar la URL en función del nombre de la ciudad
@@ -8,8 +9,20 @@ def scrape_tripadvisor_info(city_name):
     else:
         tripadvisor_url = "https://www.tripadvisor.co/Attractions-g297478-Activities-oa0-Medellin_Antioquia_Department.html"
     
-    # Configurar el driver de Selenium
-    driver = webdriver.Chrome()  # Por ejemplo, para Chrome
+    # Configurar el driver de Selenium 
+    def get_driver():
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")  # Esta opción es crucial
+        chrome_options.add_argument("--disable-dev-shm-usage")  # Soluciona problemas de recursos limitados
+        chrome_options.add_argument("--disable-gpu")  # Ayuda en ciertos casos, aunque en modo headless el GPU no se utiliza
+        chrome_options.add_argument("--window-size=1920,1080")
+    
+        driver = webdriver.Chrome(options=chrome_options)
+        return driver
+
+    # Usar la función para obtener una instancia del driver
+    driver = get_driver()
 
     # Cargar la página en el navegador
     driver.get(tripadvisor_url)
