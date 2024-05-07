@@ -2,3 +2,4 @@ Flask
 beautifulsoup4
 selenium
 gunicorn
+flask-cors

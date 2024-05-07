@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from googleinfo import scrape_google_info
 from tripadvisorinfo import scrape_tripadvisor_info
 from minubeinfo import scrape_minube_info
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
